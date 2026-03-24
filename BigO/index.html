@@ -1,5 +1,413 @@
-<html>
-  <body>
-    BigO...
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big O Notation | Algorithm Analysis Platform</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./style/style.css"></link>
+</head>
+<body>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo"><i class="fas fa-chart-line"></i><span>Big O Notation</span></div>
+            <div class="timer-display" id="timerDisplay"><i class="far fa-clock"></i> 30:00</div>
+            <div class="nav-links">
+                <a href="#intro"><i class="fas fa-home"></i> Intro</a>
+                <a href="#complexities"><i class="fas fa-chart-bar"></i> Complexities</a>
+                <a href="#graph"><i class="fas fa-chart-line"></i> Graph</a>
+                <a href="#code"><i class="fas fa-code"></i> Code</a>
+                <a href="#benchmark"><i class="fas fa-tachometer-alt"></i> Benchmark</a>
+                <a href="#quiz"><i class="fas fa-question-circle"></i> Quiz</a>
+                <a href="#exercises"><i class="fas fa-dumbbell"></i> Exercises</a>
+                <a href="#certificate"><i class="fas fa-certificate"></i> Certificate</a>
+            </div>
+            <button id="themeToggle"><i class="fas fa-moon"></i></button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="hero" id="intro">
+            <h1><i class="fas fa-chart-line"></i> Big O <span>Notation</span></h1>
+            <p>Master Algorithm Efficiency Analysis | Complete Learning Platform with Interactive Visualization</p>
+            <div style="background: rgba(220, 38, 38, 0.1); border: 1px solid var(--accent-red); padding: 1rem; margin-top: 1rem;">
+                <i class="fas fa-hourglass-half"></i> Time Limit: 30 minutes to complete quiz & exercises. Certificate will be issued only upon successful completion within the time limit.
+            </div>
+        </div>
+
+        <!-- Why Study Big O -->
+        <div class="card">
+            <h2><i class="fas fa-question-circle"></i> Why Study Big O?</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+                <div style="background: var(--bg-surface); padding: 1.25rem; border: 1px solid var(--border-color);">
+                    <i class="fas fa-database" style="font-size: 2rem; color: var(--accent-blue); margin-bottom: 0.5rem;"></i>
+                    <h3>Real Scenario</h3>
+                    <p>Database with 100,000 customers<br>Algorithm A: 0.001 seconds<br>Algorithm B: 10 seconds</p>
+                </div>
+                <div style="background: var(--bg-surface); padding: 1.25rem; border: 1px solid var(--border-color);">
+                    <i class="fas fa-chart-line" style="font-size: 2rem; color: var(--accent-blue); margin-bottom: 0.5rem;"></i>
+                    <h3>At 1,000,000 Records</h3>
+                    <p>Algorithm A: 0.01 seconds<br>Algorithm B: 1,000 seconds (~16 minutes)</p>
+                </div>
+                <div style="background: var(--bg-surface); padding: 1.25rem; border: 1px solid var(--border-color);">
+                    <i class="fas fa-lightbulb" style="font-size: 2rem; color: var(--accent-blue); margin-bottom: 0.5rem;"></i>
+                    <h3>Key Insight</h3>
+                    <p>Big O helps predict behavior as data grows and select the optimal algorithm</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Big O Complexities -->
+        <div class="card" id="complexities">
+            <h2><i class="fas fa-chart-bar"></i> Big O Complexity Classes</h2>
+            <div class="bigo-grid">
+                <div class="bigo-card" style="border-left-color: #10b981;"><h3>⚡ O(1) - Constant Time</h3><div class="complexity-badge">Constant regardless of input</div><div class="code-snippet">arr[index] • push/pop • arithmetic</div></div>
+                <div class="bigo-card" style="border-left-color: #3b82f6;"><h3>📉 O(log n) - Logarithmic</h3><div class="complexity-badge">Halves data each step</div><div class="code-snippet">Binary Search • Tree Traversal</div></div>
+                <div class="bigo-card" style="border-left-color: #f59e0b;"><h3>📊 O(n) - Linear Time</h3><div class="complexity-badge">Scales proportionally</div><div class="code-snippet">Linear Search • Single Loop</div></div>
+                <div class="bigo-card" style="border-left-color: #8b5cf6;"><h3>🚀 O(n log n) - Linearithmic</h3><div class="complexity-badge">Efficient sorting</div><div class="code-snippet">Merge Sort • Quick Sort • Heap Sort</div></div>
+                <div class="bigo-card" style="border-left-color: #ef4444;"><h3>🐌 O(n²) - Quadratic</h3><div class="complexity-badge">Slows with large input</div><div class="code-snippet">Nested Loops • Bubble Sort</div></div>
+                <div class="bigo-card" style="border-left-color: #dc2626;"><h3>💀 O(2ⁿ) - Exponential</h3><div class="complexity-badge">Extremely slow</div><div class="code-snippet">Recursive Fibonacci • Subset</div></div>
+            </div>
+        </div>
+
+        <!-- Interactive Graph -->
+        <div class="card" id="graph">
+            <h2><i class="fas fa-chart-line"></i> Interactive Big O Visualization</h2>
+            <div class="graph-container">
+                <div class="graph-controls">
+                    <label><input type="checkbox" class="graph-toggle" data-fn="O1" checked> <span style="color:#10b981;">●</span> O(1)</label>
+                    <label><input type="checkbox" class="graph-toggle" data-fn="Ologn" checked> <span style="color:#3b82f6;">●</span> O(log n)</label>
+                    <label><input type="checkbox" class="graph-toggle" data-fn="On" checked> <span style="color:#f59e0b;">●</span> O(n)</label>
+                    <label><input type="checkbox" class="graph-toggle" data-fn="Onlogn" checked> <span style="color:#8b5cf6;">●</span> O(n log n)</label>
+                    <label><input type="checkbox" class="graph-toggle" data-fn="On2" checked> <span style="color:#ef4444;">●</span> O(n²)</label>
+                </div>
+                <div><span>n = </span><span id="nValue">100</span><input type="range" id="nSlider" min="10" max="200" value="100" style="width:100%; margin: 0.5rem 0;"></div>
+                <canvas id="bigOChart" height="400"></canvas>
+            </div>
+        </div>
+
+        <!-- Comparison Table -->
+        <div class="card" id="comparison">
+            <h2><i class="fas fa-table"></i> Performance Comparison Table</h2>
+            <div class="comparison-table">
+                 <table>
+                    <thead><tr><th>Big O</th><th>Name</th><th>n=10</th><th>n=100</th><th>n=1,000</th><th>n=1,000,000</th></tr></thead>
+                    <tbody>
+                        <tr><td>O(1)</td><td>Constant</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+                        <tr><td>O(log n)</td><td>Logarithmic</td><td>3</td><td>7</td><td>10</td><td>20</td></tr>
+                        <tr><td>O(n)</td><td>Linear</td><td>10</td><td>100</td><td>1,000</td><td>1,000,000</td></tr>
+                        <tr><td>O(n log n)</td><td>Linearithmic</td><td>33</td><td>664</td><td>9,966</td><td>20,000,000</td></tr>
+                        <tr><td>O(n²)</td><td>Quadratic</td><td>100</td><td>10,000</td><td>1,000,000</td><td>1×10¹²</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Code Examples -->
+        <!-- Comprehensive Code Examples with Big O Equations -->
+<div class="card" id="code">
+    <h2><i class="fas fa-code"></i> Comprehensive Code Examples</h2>
+    
+    <!-- O(1) - Constant Time -->
+    <div class="code-example-card">
+        <h3>⚡ O(1) - Constant Time <span style="font-family: monospace; font-size: 0.9rem;">(T(n) = c)</span></h3>
+        <div style="background: rgba(59, 130, 246, 0.1); padding: 0.5rem; border-radius: 8px; margin-bottom: 0.5rem;">
+            <code style="color: var(--accent-blue);">📐 Mathematical: T(n) = 1  (constant)</code>
+        </div>
+        <pre><code>// Array access - constant time
+function getElement(arr, index) {
+    return arr[index];  // Always takes the same time regardless of array size
+}
+
+// Mathematical operations
+function add(a, b) {
+    return a + b;  // Single operation - O(1)
+}
+
+// Hash table operations
+const map = new Map();
+map.set('key', 'value');  // O(1) average case
+map.get('key');           // O(1) average case</code></pre>
+        <div style="background: rgba(16, 185, 129, 0.1); padding: 0.5rem; border-radius: 8px; margin-top: 0.5rem;">
+            <i class="fas fa-lightbulb"></i> <strong>Explanation:</strong> The execution time remains constant regardless of input size (n). Even with 1 billion elements, it still takes the same time.
+        </div>
+    </div>
+
+    <!-- O(log n) - Logarithmic Time -->
+    <div class="code-example-card">
+        <h3>📉 O(log n) - Logarithmic Time <span style="font-family: monospace; font-size: 0.9rem;">(T(n) = log₂ n)</span></h3>
+        <div style="background: rgba(59, 130, 246, 0.1); padding: 0.5rem; border-radius: 8px; margin-bottom: 0.5rem;">
+            <code style="color: var(--accent-blue);">📐 Mathematical: T(n) = log₂(n)  (halves the search space each step)</code>
+        </div>
+        <pre><code>function binarySearch(arr, target) {
+    let left = 0, right = arr.length - 1;
+    
+    while (left <= right) {
+        const mid = Math.floor((left + right) / 2);
+        if (arr[mid] === target) return mid;
+        if (arr[mid] < target) left = mid + 1;
+        else right = mid - 1;
+    }
+    return -1;
+}
+// Each iteration eliminates half of the remaining elements
+// For n=1,000,000 → only about 20 iterations needed!</code></pre>
+        <div style="background: rgba(16, 185, 129, 0.1); padding: 0.5rem; border-radius: 8px; margin-top: 0.5rem;">
+            <i class="fas fa-lightbulb"></i> <strong>Explanation:</strong> The algorithm divides the problem in half each time. When n doubles, only one extra step is needed. Very efficient for large datasets!
+        </div>
+    </div>
+
+    <!-- O(n) - Linear Time -->
+    <div class="code-example-card">
+        <h3>📊 O(n) - Linear Time <span style="font-family: monospace; font-size: 0.9rem;">(T(n) = n)</span></h3>
+        <div style="background: rgba(59, 130, 246, 0.1); padding: 0.5rem; border-radius: 8px; margin-bottom: 0.5rem;">
+            <code style="color: var(--accent-blue);">📐 Mathematical: T(n) = n  (linear relationship with input size)</code>
+        </div>
+        <pre><code>// Find maximum value
+function findMax(arr) {
+    let max = arr[0];
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] > max) max = arr[i];  // Checks each element once
+    }
+    return max;
+}
+
+// Calculate sum
+function sumArray(arr) {
+    let sum = 0;
+    for (let num of arr) sum += num;  // One pass through all elements
+    return sum;
+}
+
+// Linear search
+function linearSearch(arr, target) {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === target) return i;  // Worst case: checks all n elements
+    }
+    return -1;
+}</code></pre>
+        <div style="background: rgba(16, 185, 129, 0.1); padding: 0.5rem; border-radius: 8px; margin-top: 0.5rem;">
+            <i class="fas fa-lightbulb"></i> <strong>Explanation:</strong> Execution time grows proportionally with input size. If n doubles, execution time roughly doubles.
+        </div>
+    </div>
+
+    <!-- O(n log n) - Linearithmic Time -->
+    <div class="code-example-card">
+        <h3>🚀 O(n log n) - Linearithmic Time <span style="font-family: monospace; font-size: 0.9rem;">(T(n) = n log₂ n)</span></h3>
+        <div style="background: rgba(59, 130, 246, 0.1); padding: 0.5rem; border-radius: 8px; margin-bottom: 0.5rem;">
+            <code style="color: var(--accent-blue);">📐 Mathematical: T(n) = n × log₂(n)  (divide and conquer with linear merge)</code>
+        </div>
+        <pre><code>function mergeSort(arr) {
+    if (arr.length <= 1) return arr;
+    
+    const mid = Math.floor(arr.length / 2);
+    const left = mergeSort(arr.slice(0, mid));   // Divide into halves
+    const right = mergeSort(arr.slice(mid));      // Recursively sort
+    
+    return merge(left, right);  // Merge takes O(n) time
+}
+
+function merge(left, right) {
+    const result = [];
+    let i = 0, j = 0;
+    
+    while (i < left.length && j < right.length) {
+        if (left[i] < right[j]) result.push(left[i++]);
+        else result.push(right[j++]);
+    }
+    return [...result, ...left.slice(i), ...right.slice(j)];
+}
+
+// Example: For n = 1,000,000 → about 20 million operations (n log n)</code></pre>
+        <div style="background: rgba(16, 185, 129, 0.1); padding: 0.5rem; border-radius: 8px; margin-top: 0.5rem;">
+            <i class="fas fa-lightbulb"></i> <strong>Explanation:</strong> This is the optimal complexity for comparison-based sorting. Much faster than O(n²) for large datasets.
+        </div>
+    </div>
+
+    <!-- O(n²) - Quadratic Time -->
+    <div class="code-example-card">
+        <h3>🐌 O(n²) - Quadratic Time <span style="font-family: monospace; font-size: 0.9rem;">(T(n) = n²)</span></h3>
+        <div style="background: rgba(59, 130, 246, 0.1); padding: 0.5rem; border-radius: 8px; margin-bottom: 0.5rem;">
+            <code style="color: var(--accent-blue);">📐 Mathematical: T(n) = n²  (nested iterations)</code>
+        </div>
+        <pre><code>// Find duplicate pairs
+function findDuplicates(arr) {
+    const duplicates = [];
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = i + 1; j < arr.length; j++) {
+            if (arr[i] === arr[j]) {
+                duplicates.push(arr[i]);  // Compares every pair
+            }
+        }
+    }
+    return duplicates;
+}
+
+// Bubble sort
+function bubbleSort(arr) {
+    const n = arr.length;
+    for (let i = 0; i < n - 1; i++) {
+        for (let j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+            }
+        }
+    }
+    return arr;
+}
+
+// Example: For n = 10,000 → 100 million operations!</code></pre>
+        <div style="background: rgba(16, 185, 129, 0.1); padding: 0.5rem; border-radius: 8px; margin-top: 0.5rem;">
+            <i class="fas fa-lightbulb"></i> <strong>Explanation:</strong> Nested loops cause quadratic growth. When n doubles, execution time quadruples. Avoid for large datasets!
+        </div>
+    </div>
+
+    <!-- O(n³) - Cubic Time -->
+    <div class="code-example-card">
+        <h3>🐢 O(n³) - Cubic Time <span style="font-family: monospace; font-size: 0.9rem;">(T(n) = n³)</span></h3>
+        <div style="background: rgba(59, 130, 246, 0.1); padding: 0.5rem; border-radius: 8px; margin-bottom: 0.5rem;">
+            <code style="color: var(--accent-blue);">📐 Mathematical: T(n) = n³  (triple nested loops)</code>
+        </div>
+        <pre><code>// Naive matrix multiplication (n × n matrices)
+function matrixMultiply(A, B) {
+    const n = A.length;
+    const C = Array(n).fill().map(() => Array(n).fill(0));
+    
+    for (let i = 0; i < n; i++) {           // n iterations
+        for (let j = 0; j < n; j++) {       // n iterations
+            for (let k = 0; k < n; k++) {   // n iterations
+                C[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+    return C;
+}
+// Example: For n = 1,000 → 1 billion operations!</code></pre>
+        <div style="background: rgba(16, 185, 129, 0.1); padding: 0.5rem; border-radius: 8px; margin-top: 0.5rem;">
+            <i class="fas fa-lightbulb"></i> <strong>Explanation:</strong> Triple nested loops cause cubic growth. Extremely slow for large inputs. Requires optimization techniques.
+        </div>
+    </div>
+
+    <!-- O(2ⁿ) - Exponential Time -->
+    <div class="code-example-card">
+        <h3>💀 O(2ⁿ) - Exponential Time <span style="font-family: monospace; font-size: 0.9rem;">(T(n) = 2ⁿ)</span></h3>
+        <div style="background: rgba(59, 130, 246, 0.1); padding: 0.5rem; border-radius: 8px; margin-bottom: 0.5rem;">
+            <code style="color: var(--accent-blue);">📐 Mathematical: T(n) = 2ⁿ  (each call creates 2 recursive calls)</code>
+        </div>
+        <pre><code>// Recursive Fibonacci - Very inefficient
+function fibonacci(n) {
+    if (n <= 1) return n;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+// Time: O(2ⁿ), Space: O(n)
+// For n=50 → about 1.1 quadrillion operations!
+
+// Better solution: O(n) using memoization or iteration
+function fibonacciOptimized(n) {
+    if (n <= 1) return n;
+    let prev = 0, curr = 1;
+    for (let i = 2; i <= n; i++) {
+        [prev, curr] = [curr, prev + curr];
+    }
+    return curr;
+}</code></pre>
+        <div style="background: rgba(16, 185, 129, 0.1); padding: 0.5rem; border-radius: 8px; margin-top: 0.5rem;">
+            <i class="fas fa-lightbulb"></i> <strong>Explanation:</strong> Exponential growth is extremely dangerous! Even n=50 can take years to compute. Always look for optimization!
+        </div>
+    </div>
+
+    <!-- O(n!) - Factorial Time -->
+    <div class="code-example-card">
+        <h3>💀💀 O(n!) - Factorial Time <span style="font-family: monospace; font-size: 0.9rem;">(T(n) = n!)</span></h3>
+        <div style="background: rgba(59, 130, 246, 0.1); padding: 0.5rem; border-radius: 8px; margin-bottom: 0.5rem;">
+            <code style="color: var(--accent-blue);">📐 Mathematical: T(n) = n!  (all permutations)</code>
+        </div>
+        <pre><code>// Generate all permutations of a string
+function permutations(str) {
+    const result = [];
+    
+    function permute(current, remaining) {
+        if (remaining.length === 0) {
+            result.push(current);
+            return;
+        }
+        for (let i = 0; i < remaining.length; i++) {
+            permute(current + remaining[i], 
+                    remaining.slice(0, i) + remaining.slice(i + 1));
+        }
+    }
+    
+    permute('', str);
+    return result;
+}
+// For n=10 → 3,628,800 permutations
+// For n=20 → 2.4×10¹⁸ permutations (impossible to compute)</code></pre>
+        <div style="background: rgba(16, 185, 129, 0.1); padding: 0.5rem; border-radius: 8px; margin-top: 0.5rem;">
+            <i class="fas fa-lightbulb"></i> <strong>Explanation:</strong> Factorial is the worst complexity. Only feasible for very small n (n ≤ 10). Used in traveling salesman problem brute force.
+        </div>
+    </div>
+</div>
+
+        <!-- Performance Benchmark -->
+        <div class="card" id="benchmark">
+            <h2><i class="fas fa-tachometer-alt"></i> Performance Benchmark</h2>
+            <div class="benchmark-header">
+                <div class="input-group"><i class="fas fa-chart-simple"></i><label>Data Size:</label><input type="number" id="benchmarkSize" value="10000" min="1000" max="30000" step="500"></div>
+                <div class="input-group"><i class="fas fa-repeat"></i><label>Iterations:</label><input type="number" id="benchmarkIterations" value="3" min="1" max="10"></div>
+                <button onclick="runAllBenchmarks()"><i class="fas fa-play" style="background-color:#10b981;"></i> Run All Tests</button>
+                <button onclick="clearBenchmarkResults()"><i class="fas fa-trash" style="background-color: #dc2626;"></i> Clear Results</button>
+            </div>
+            <div class="benchmark-stats">
+                <div class="stat-card"><i class="fas fa-microchip"></i><div class="stat-value" id="totalTests">0</div><div>Tests Completed</div></div>
+                <div class="stat-card"><i class="fas fa-tachometer-alt"></i><div class="stat-value" id="avgTime">0</div><div>Avg Time (ms)</div></div>
+                <div class="stat-card"><i class="fas fa-chart-line"></i><div class="stat-value" id="fastestAlgo">-</div><div>Fastest Algorithm</div></div>
+                <div class="stat-card"><i class="fas fa-hourglass-half"></i><div class="stat-value" id="slowestAlgo">-</div><div>Slowest Algorithm</div></div>
+            </div>
+            <div class="benchmark-grid">
+                <div class="benchmark-item"><h3><i class="fas fa-search"></i> Linear Search</h3><div class="complexity-tag" style="background:rgba(245,158,11,0.2);color:#f59e0b;">O(n) - Linear</div><div id="linearResult" class="benchmark-result">-</div><div class="benchmark-detail">Worst case: checks every element</div><button onclick="runSingleBenchmark('linear')"><i class="fas fa-play"></i> Test</button></div>
+                <div class="benchmark-item"><h3><i class="fas fa-code-branch"></i> Binary Search</h3><div class="complexity-tag" style="background:rgba(59,130,246,0.2);color:#3b82f6;">O(log n) - Logarithmic</div><div id="binaryResult" class="benchmark-result">-</div><div class="benchmark-detail">Requires sorted array</div><button onclick="runSingleBenchmark('binary')"><i class="fas fa-play"></i> Test</button></div>
+                <div class="benchmark-item"><h3><i class="fas fa-chart-simple"></i> Bubble Sort</h3><div class="complexity-tag" style="background:rgba(239,68,68,0.2);color:#ef4444;">O(n²) - Quadratic</div><div id="bubbleResult" class="benchmark-result">-</div><div class="benchmark-detail">Simple but inefficient</div><button onclick="runSingleBenchmark('bubble')"><i class="fas fa-play"></i> Test</button></div>
+                <div class="benchmark-item"><h3><i class="fas fa-bolt"></i> Quick Sort</h3><div class="complexity-tag" style="background:rgba(139,92,246,0.2);color:#8b5cf6;">O(n log n) - Linearithmic</div><div id="quickResult" class="benchmark-result">-</div><div class="benchmark-detail">Divide and conquer</div><button onclick="runSingleBenchmark('quick')"><i class="fas fa-play"></i> Test</button></div>
+                <div class="benchmark-item"><h3><i class="fas fa-code-fork"></i> Merge Sort</h3><div class="complexity-tag" style="background:rgba(139,92,246,0.2);color:#8b5cf6;">O(n log n) - Linearithmic</div><div id="mergeResult" class="benchmark-result">-</div><div class="benchmark-detail">Stable sorting</div><button onclick="runSingleBenchmark('merge')"><i class="fas fa-play"></i> Test</button></div>
+                <div class="benchmark-item"><h3><i class="fas fa-chart-line"></i> Selection Sort</h3><div class="complexity-tag" style="background:rgba(239,68,68,0.2);color:#ef4444;">O(n²) - Quadratic</div><div id="selectionResult" class="benchmark-result">-</div><div class="benchmark-detail">Finds minimum each pass</div><button onclick="runSingleBenchmark('selection')"><i class="fas fa-play"></i> Test</button></div>
+            </div>
+            <div class="benchmark-chart"><h3><i class="fas fa-chart-bar"></i> Performance Comparison</h3><canvas id="benchmarkChart" height="300"></canvas></div>
+            <div style="margin-top:1.5rem;"><h3><i class="fas fa-table"></i> Detailed Results</h3><div class="comparison-table"><table class="performance-table" id="resultsTable"><thead><tr><th>Algorithm</th><th>Complexity</th><th>Time (ms)</th><th>Operations</th><th>Status</th> '</thead><tbody id="resultsTableBody"> <tr><td colspan="5">No tests run yet. Click "Run All Tests" to start benchmarking. </tr></tbody></table></div></div>
+        </div>
+
+        <!-- Cheat Sheet -->
+        <div class="card">
+            <h2><i class="fas fa-graduation-cap"></i> Big O Cheat Sheet</h2>
+            <table><thead><tr><th>Complexity</th><th>Big O</th><th>Description</th><th>Example</th></tr></thead>
+            <tbody><tr><td>Constant</td><td>O(1)</td><td>Constant time</td><td>arr[i], push/pop</td></tr>
+            <tr><td>Logarithmic</td><td>O(log n)</td><td>Divide and conquer</td><td>Binary Search</td></tr>
+            <tr><td>Linear</td><td>O(n)</td><td>Single loop</td><td>Linear Search</td></tr>
+            <tr><td>Linearithmic</td><td>O(n log n)</td><td>Efficient sorting</td><td>Merge Sort</td></tr>
+            <tr><td>Quadratic</td><td>O(n²)</td><td>Nested loops</td><td>Bubble Sort</td></tr></tbody></table>
+            <table style="margin-top:1rem;"><thead><tr><th colspan="2">📐 Big O Calculation Rules</th></tr></thead>
+            <tbody><tr><td>Rule 1: Drop Constants</td><td>O(2n) → O(n), O(100) → O(1)</td></tr>
+            <tr><td>Rule 2: Keep Dominant Term</td><td>O(n² + n) → O(n²)</td></tr>
+            <tr><td>Rule 3: Addition (Sequential)</td><td>O(f) + O(g) = O(max(f,g))</td></tr>
+            <tr><td>Rule 4: Multiplication (Nested)</td><td>O(f) × O(g) = O(f × g)</td></tr></tbody></table>
+        </div>
+
+        <!-- Quiz -->
+        <div class="card" id="quiz"><h2><i class="fas fa-question-circle"></i> Knowledge Quiz (5 Questions)</h2><div id="quizContainer"></div><div id="quizScore" class="score-summary" style="display:none;"></div></div>
+
+        <!-- Exercises -->
+        <div class="card" id="exercises"><h2><i class="fas fa-dumbbell"></i> Practice Exercises (20 Questions)</h2><div id="exercisesContainer"></div><div id="exercisesScore" class="score-summary" style="display:none;"></div></div>
+
+        <!-- Certificate -->
+        <div class="card" id="certificate"><h2><i class="fas fa-certificate"></i> Certificate of Completion</h2><div style="text-align: center;"><input type="text" id="studentName" class="name-input" placeholder="Enter your full name"> <button onclick="generateCertificate()"><i class="fas fa-diploma"></i> Generate Certificate</button><div id="certificateContainer"></div></div></div>
+
+        <div class="footer"><p><i class="fas fa-chart-line"></i> Workshop #: Big O Notation Complete Learning | Master Algorithm Analysis</p><p>© 2026 - CSI105 Data Structures and Algorithms</p></div>
+    </div>
+
+    <script src="./script/script.js"></script>
+</body>
 </html>
